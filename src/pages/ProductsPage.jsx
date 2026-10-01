@@ -289,9 +289,9 @@ export default function ProductsPage() {
     }
   };
 
-  // Soft Delete Product
+  // Permanently Delete Product
   const handleDeleteProduct = async (prod) => {
-    if (window.confirm(`Delete product "${prod.name}" (SKU: ${prod.sku})? This will soft delete it from client view.`)) {
+    if (window.confirm(`Delete product "${prod.name}" (SKU: ${prod.sku}) permanently? This will completely remove it from the catalogue and database.`)) {
       try {
         await adminProductService.deleteProduct(prod.id);
         fetchProductsAndCategories();
@@ -603,7 +603,7 @@ export default function ProductsPage() {
                         </button>
                         <button
                           onClick={() => handleDeleteProduct(prod)}
-                          title="Soft Delete Product"
+                          title="Permanently Delete Product"
                           style={{
                             background: '#FEF2F2',
                             border: '1px solid #FCA5A5',
