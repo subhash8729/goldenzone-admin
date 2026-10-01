@@ -93,7 +93,13 @@ export const adminProductService = {
   createProduct: (data) => api.post('/products', data),
   updateProduct: (id, data) => api.put(`/products/${id}`, data),
   deleteProduct: (id) => api.delete(`/products/${id}`),
-  toggleFlag: (id, field, value) => api.patch(`/products/${id}/toggle`, { field, value })
+  toggleFlag: (id, field, value) => api.patch(`/products/${id}/toggle`, { field, value }),
+  // Dedicated Image Management
+  getProductImages: (productId) => api.get(`/products/${productId}/images`),
+  addProductImage: (productId, image_url) => api.post(`/products/${productId}/images`, { image_url }),
+  deleteProductImage: (productId, imageId) => api.delete(`/products/${productId}/images/${imageId}`),
+  setPrimaryProductImage: (productId, imageId) => api.patch(`/products/${productId}/images/${imageId}/primary`),
+  reorderProductImages: (productId, imageIds) => api.put(`/products/${productId}/images/reorder`, { imageIds })
 };
 
 export const adminOrderService = {
